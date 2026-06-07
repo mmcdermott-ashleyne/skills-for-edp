@@ -77,6 +77,22 @@ rules:
     description: Use POST /v1/catalog/search to find items across workspaces by name, description, or type
     reference: skills/search-consumption-cli/SKILL.md
 
+  - name: powerbi_report_planning
+    description: Plan and gather requirements before authoring PBIR — use for "build a new dashboard" intents
+    reference: skills/powerbi-report-planning/SKILL.md
+
+  - name: powerbi_report_design
+    description: Produce the design brief (tone, archetype, layout, theme) before PBIR edits
+    reference: skills/powerbi-report-design/SKILL.md
+
+  - name: powerbi_report_authoring
+    description: Edit PBIR/PBIP files (pages, visuals, formatting, themes) and validate via the CLI
+    reference: skills/powerbi-report-authoring/SKILL.md
+
+  - name: powerbi_report_management
+    description: Manage Fabric Power BI report items (create/get/update/delete) via az rest
+    reference: skills/powerbi-report-management/SKILL.md
+
   # Warehouse Operations
   - name: sqldw_skills
     description: Authoring skill is sqldw-authoring-cli, consumption skill is sqldw-consumption-cli, operations skill is sqldw-operations-cli
@@ -115,5 +131,6 @@ documentation_links:
   kql_query_reference: https://learn.microsoft.com/en-us/kusto/query/
   kusto_cli: https://learn.microsoft.com/en-us/kusto/tools/kusto-cli
   semantic_models: https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-understand
+  powerbi_reports: https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report
   data_agents: https://learn.microsoft.com/en-us/fabric/data-science/concept-data-agent
   data_agent_evaluation: https://learn.microsoft.com/en-us/fabric/data-science/fabric-data-agent-sdk

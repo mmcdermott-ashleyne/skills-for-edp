@@ -31,6 +31,7 @@ Fabric REST APIs: https://learn.microsoft.com/en-us/rest/api/fabric/articles/
 | Activator | https://learn.microsoft.com/en-us/fabric/real-time-intelligence/data-activator/activator-introduction |
 | Catalog Search | https://learn.microsoft.com/en-us/rest/api/fabric/core/catalog/search |
 | Semantic Models | https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-understand |
+| Power BI Reports | https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report |
 | Data Agents | https://learn.microsoft.com/en-us/fabric/data-science/concept-data-agent |
 | Data Agent Evaluation | https://learn.microsoft.com/en-us/fabric/data-science/fabric-data-agent-sdk |
 
@@ -48,7 +49,12 @@ Fabric REST APIs: https://learn.microsoft.com/en-us/rest/api/fabric/articles/
 - Power Query M for Dataflows Gen2 transformations (see `dataflows-authoring-cli` and `dataflows-consumption-cli` skills)
 - Eventstream for real-time event ingestion (graph-based topology with sources, operators, destinations)
 - Activator for Reflex alerts, notifications, and automated actions over Fabric events and data
+- DAX for Semantic Model measures
 - Semantic model development (see `semantic-model-authoring`)
+- Power BI report planning skill: `skills/powerbi-report-planning/SKILL.md` — requirements, page plan, approval gate
+- Power BI report design skill: `skills/powerbi-report-design/SKILL.md` — archetype routing, layout, theme, accessibility
+- Power BI report authoring skill: `skills/powerbi-report-authoring/SKILL.md` — PBIR/PBIP file mechanics, Desktop reload/screenshot
+- Power BI report management skill: `skills/powerbi-report-management/SKILL.md` — Fabric report item CRUD via `az rest`
 - Spark operations skill: `skills/spark-operations-cli/SKILL.md` — read-only triage for failed jobs, stuck sessions, performance bottlenecks
 
 ### Operations

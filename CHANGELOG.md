@@ -2,6 +2,20 @@
 
 User-facing changes for the public Microsoft Fabric Skills release.
 
+## [0.3.3] - 2026-06-07
+
+### Added
+
+- **`powerbi-report-planning`** — guided requirements-to-implementation workflow for new Power BI reports and dashboards built from semantic models, datasets, or PBIP projects. Use to plan then implement a report end-to-end: define audience, scope, page plan, design direction, dependencies, and delivery target, then produce a locked report spec with explicit approval before any PBIR authoring begins. For direct authoring without the planning gate, invoke `powerbi-report-authoring` directly.
+- **`powerbi-report-design`** — visual design guidance for Power BI reports before any PBIR files are written. Use to choose tone, signature, page archetypes, chart types, layout, color, typography, theme direction, and accessibility approach; to redesign/restyle an existing report or apply a brand; or to critique chart and layout choices. Produces a design contract that downstream authoring consumes. Ships with 19 references covering accessibility, anti-patterns, page archetypes (analytical canvas, comparative benchmark, executive summary, narrative story, operational monitor), brownfield migration, chart selection, design brief, interactivity, pre-flight checklist, signatures, tone catalog, typography, and a visual cookbook.
+- **`powerbi-report-authoring`** — create and modify Power BI report files in PBIR/PBIP format using the `powerbi-report-author` and `powerbi-desktop` CLIs. Implements an approved report spec or design brief; adds or edits pages, visuals, filters, slicers, bookmarks, themes, and formatting; validates PBIR and verifies rendering in Power BI Desktop. Ships with 23 references covering authoring, cartesian charts, color strategy, conditional formatting, expressions, filter pane, filters, formatting (overview + details), image, page formatting, Power BI Desktop, the `powerbi-report-author` CLI, re-theming, screenshot review, shape, slicers, table, textbox, theming, and version control. For open-ended visual design choices, invoke `powerbi-report-design` first.
+- **`powerbi-report-management`** — manage Power BI report workspace items in Microsoft Fabric via `az rest` CLI against the Fabric REST API. Create reports from PBIR definitions, get or download report definitions, update report definitions or properties, list workspace reports, and delete reports. For report layout authoring (pages, visuals, filters, formatting), use `powerbi-report-authoring` instead.
+- **`powerbi-authoring` plugin bundle expanded** — the dedicated `powerbi-authoring` plugin now ships the four new `powerbi-report-*` skills alongside `semantic-model-authoring` and `check-updates`, with the `powerbi-modeling-mcp` server pre-configured. Reinstall via `/plugin install powerbi-authoring@fabric-collection` to pick up the new report skills.
+
+### Changed
+
+- **`semantic-model-authoring` DAX performance references refined** — added Microsoft Learn further-reading links for DAX engine tracing, horizontal fusion, and Direct Lake query performance in `dax-perf-decision-guide.md` and `dax-perf-patterns.md`; renamed scenario-specific DAX examples to use generic names; rewrote DAX examples to be self-contained so they're easier to read on their own.
+
 ## [0.3.2] - 2026-06-03
 
 ### Added
@@ -14,6 +28,7 @@ User-facing changes for the public Microsoft Fabric Skills release.
 - **`dataflows-authoring-cli` reference docs (3 new)** — `output-destinations.md` (Lakehouse/Warehouse/SQL DB output destination patterns including staging behavior, schema mapping, and refresh semantics), `connection-management.md` (creating, binding, and rotating connection IDs for Dataflows Gen2), and `mashup-preview.md` (inspecting and validating Power Query M before publishing).
 - **`spark-operations-cli` automated diagnostic workflow** — new `references/automated-diagnostic-workflow.md` for end-to-end Spark/Livy diagnostics: job triage → executor/driver log mining → Spark Advisor findings → mitigation recommendations.
 - **`synapse-migration` deep resources (12 new)** — capacity sizing, connector refactoring, external Hive Metastore migration, feature parity matrix, lake database migration, library compatibility, migration gotchas, migration orchestrator, migration report, security and governance, Spark item migration, Spark pool migration, and validation/testing.
+- **`EVENTHOUSE-CONSUMPTION-CORE` common reference** — shared Eventhouse/KQL consumption patterns surfaced via the `fabric-authoring` plugin bundle.
 
 ### Changed
 

@@ -103,6 +103,13 @@ Developers use REST APIs to manage artifacts, then protocol-specific connections
 - Authoring skill: `skills/semantic-model-authoring/SKILL.md`
 - Consumption skill: `skills/semantic-model-consumption/SKILL.md`
 
+### Power BI Reports (PBIR/PBIP)
+- Keep planning, design, local PBIR edits, and Fabric item management as separate phases
+- Planning: `skills/powerbi-report-planning/SKILL.md`
+- Design: `skills/powerbi-report-design/SKILL.md`
+- Authoring: `skills/powerbi-report-authoring/SKILL.md`
+- Management: `skills/powerbi-report-management/SKILL.md`
+
 ### Data Agents
 - Use Python SDK within Fabric notebooks for rapid prototyping
 - Provide custom instructions for domain-specific terminology
