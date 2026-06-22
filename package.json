@@ -1,37 +1,32 @@
 {
-  "name": "@microsoft/skills-for-fabric",
+  "name": "skills-for-edp",
   "version": "0.3.4",
-  "description": "AI coding assistant skills for Microsoft Fabric developers and consumers",
+  "description": "Ashley / FDE agent skills for local PBIP Power BI semantic-model and report editing",
   "repository": {
     "type": "git",
-    "url": "https://github.com/microsoft/skills-for-fabric.git"
+    "url": "https://github.com/mmcdermott-ashleyne/skills-for-edp.git"
   },
   "keywords": [
-    "fabric",
-    "microsoft-fabric",
+    "power-bi",
+    "semantic-model",
+    "pbip",
+    "pbir",
+    "tmdl",
+    "dax",
     "copilot",
-    "github-copilot",
     "claude",
-    "ai-skills",
-    "data-engineering",
-    "data-warehouse",
-    "lakehouse",
-    "power-bi"
+    "ai-skills"
   ],
-  "author": "Microsoft",
+  "author": "Ashley / FDE",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/microsoft/skills-for-fabric/issues"
+    "url": "https://github.com/mmcdermott-ashleyne/skills-for-edp/issues"
   },
-  "homepage": "https://github.com/microsoft/skills-for-fabric#readme",
+  "homepage": "https://github.com/mmcdermott-ashleyne/skills-for-edp#readme",
   "files": [
     "skills/**"
   ],
   "scripts": {
-    "postinstall": "node -e \"console.log('\\n✅ Skills for Fabric installed. Use the GitHub Copilot CLI plugin marketplace, or copy the relevant skills/ folder into your AI tool configuration.\\n')\"",
-    "report:coverage-gaps": "python tests/coverage_gap_report.py",
-    "test": "pytest",
-    "test:semantic": "pytest -m semantic",
-    "test:integration": "pytest -m integration"
+    "postinstall": "node -e \"console.log('\\n✅ skills-for-edp installed. Copy the relevant skills/ folder into your AI tool configuration.\\n')\""
   }
 }
