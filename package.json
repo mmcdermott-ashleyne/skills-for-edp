@@ -25,9 +25,7 @@
   },
   "homepage": "https://github.com/microsoft/skills-for-fabric#readme",
   "files": [
-    "agents/**",
-    "skills/**",
-    "mcp-setup/**"
+    "skills/**"
   ],
   "scripts": {
     "postinstall": "node -e \"console.log('\\n✅ Skills for Fabric installed. Use the GitHub Copilot CLI plugin marketplace, or copy the relevant skills/ folder into your AI tool configuration.\\n')\"",
