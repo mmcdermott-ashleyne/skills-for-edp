@@ -36,20 +36,32 @@ TMDL lives under `<Name>.SemanticModel/definition/`:
 └── expressions.tmdl        # shared M expressions / parameters (if present)
 ```
 
-To find a measure, column, or table: **grep the `tables/*.tmdl` files** for the
-name. Each table file holds its columns (`column ...`), measures (`measure ...`),
-and partition. Do not run discovery queries — read the files.
+To find or inspect an object, **prefer the read-only model tool** (parses the
+TMDL and returns just the slice you need — far cheaper than reading whole table
+files):
+
+```bash
+node bin/model.mjs show "Net Sales" --model <pbip-dir>   # one block + props + description
+node bin/model.mjs list --measures --folder Sales         # filtered inventory
+node bin/model.mjs deps "Net Sales"                       # what references it (rename/delete impact)
+node bin/model.mjs audit --missing-descriptions           # AI-readiness gaps
+node bin/model.mjs lint                                    # dangling refs, duplicate names
+```
+
+Add `--json` for compact structured output. If the tool is unavailable, fall
+back to grepping `tables/*.tmdl` for the name. Either way, then open the one
+target `.tmdl` file to edit.
 
 ## 2. Make the edit
 
 Edit the `.tmdl` file directly with exact string edits.
 
-- A measure block looks like:
+- A measure block looks like (the `///` line above it IS the description):
   ```tmdl
+  /// Recognized sales after returns and discounts.
   measure 'Net Sales' = CALCULATE(SUM(Sales[Amount]), ...)
       formatString: #,0
       displayFolder: Sales
-      description: Recognized sales after returns and discounts.
   ```
 - Keep changes small. Preserve the file's existing indentation (tabs), property
   order, and formatting. Do not reorder or reflow unrelated lines.
@@ -62,7 +74,9 @@ Edit the `.tmdl` file directly with exact string edits.
 ## 3. AI-readiness checklist (required for visible objects)
 
 When you **add or change** a visible table, column, or measure, add or update its
-`description` line in the same edit. A description states:
+`///` description comment (the line directly above the object) in the same edit.
+Run `node bin/model.mjs audit --missing-descriptions` to find gaps. A description
+states:
 
 - what it means in business terms, and (for tables) the grain
 - aggregation / filter / time-intelligence behavior (measures)
