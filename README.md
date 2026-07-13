@@ -9,8 +9,8 @@ It has two parts:
 
 1. **Agent skills** (`skills/`) — instructions an AI agent (Claude Code, Copilot,
    etc.) follows to edit the model or a report.
-2. **`pbip-model`** (`bin/model.mjs`) — a small read-only command you (or an
-   agent) run to query the semantic model without opening every TMDL file.
+2. **`pbip-model`** (`bin/model.ps1`) — a small read-only PowerShell command you
+   (or an agent) run to query the semantic model without opening every TMDL file.
 
 ## What problem this solves
 
@@ -25,53 +25,51 @@ tens of thousands of lines total. To answer "what does this measure do?" or
 
 ### Prerequisite
 
-[Node.js](https://nodejs.org/) 18 or later. Check:
-
-```bash
-node --version
-```
+PowerShell. Already on every Windows machine — no install, no Node.js. Use
+either Windows PowerShell (`powershell`) or PowerShell 7+ (`pwsh`).
 
 ### Run it
 
-You don't install anything. From this repo, point it at your PBIP project folder
-(the folder that contains `<Name>.SemanticModel`):
+From this repo, point it at your PBIP project folder (the folder that contains
+`<Name>.SemanticModel`):
 
-```bash
-node bin/model.mjs <command> --model "C:\path\to\your\pbip-project"
+```powershell
+pwsh bin/model.ps1 <command> -Model "C:\path\to\your\pbip-project"
 ```
 
-If you run it from *inside* your PBIP project, you can drop `--model` — it finds
-the `.SemanticModel` automatically.
+If you run it from *inside* your PBIP project, you can drop `-Model` — it finds
+the `.SemanticModel` automatically. For full help: `Get-Help bin/model.ps1 -Full`
+(or run it with no command).
 
 ### The five commands
 
-```bash
+```powershell
 # 1. Show one measure / column / table: its DAX, format, folder, description
-node bin/model.mjs show "Annualized Attrition Rate (As Of Date)" --model "<path>"
+pwsh bin/model.ps1 show "Annualized Attrition Rate (As Of Date)" -Model "<path>"
 
 # 2. List objects, optionally filtered
-node bin/model.mjs list --measures                 # all measures
-node bin/model.mjs list --measures --folder Headcount
-node bin/model.mjs list --columns --table dim_employee
-node bin/model.mjs list --tables
+pwsh bin/model.ps1 list -Measures                  # all measures
+pwsh bin/model.ps1 list -Measures -Folder Headcount
+pwsh bin/model.ps1 list -Columns -Table dim_employee
+pwsh bin/model.ps1 list -Tables
 
 # 3. Impact analysis — what references this object?
 #    Use BEFORE renaming or deleting anything.
-node bin/model.mjs deps "Terminations"             # → measures + relationships that use it
+pwsh bin/model.ps1 deps "Terminations"             # → measures + relationships that use it
 
 # 4. AI-readiness audit — visible objects missing a description
-node bin/model.mjs audit
+pwsh bin/model.ps1 audit
 
 # 5. Sanity check — broken references, duplicate measure names
-node bin/model.mjs lint
+pwsh bin/model.ps1 lint
 ```
 
-Add `--json` to any command for machine-readable output.
+Add `-Json` to any command for machine-readable output.
 
 ### Worked example
 
-```bash
-node bin/model.mjs show "Net Employee Change" --model "C:\...\enterprise_data_platform"
+```powershell
+pwsh bin/model.ps1 show "Net Employee Change" -Model "C:\...\enterprise_data_platform"
 ```
 
 ```text
@@ -113,7 +111,7 @@ stays small.
 ```text
 AGENTS.md                         Router: picks one of the two skills
 CLAUDE.md / GEMINI.md             Tool-specific entry points → AGENTS.md
-bin/model.mjs                     pbip-model query tool
+bin/model.ps1                     pbip-model query tool (PowerShell, read-only)
 skills/edit-semantic-model/       Semantic model editing skill + references
 skills/edit-powerbi-report/       Report editing skill + references
 skills-for-edp-setup.md           How this repo was carved from upstream

@@ -40,15 +40,15 @@ To find or inspect an object, **prefer the read-only model tool** (parses the
 TMDL and returns just the slice you need — far cheaper than reading whole table
 files):
 
-```bash
-node bin/model.mjs show "Net Sales" --model <pbip-dir>   # one block + props + description
-node bin/model.mjs list --measures --folder Sales         # filtered inventory
-node bin/model.mjs deps "Net Sales"                       # what references it (rename/delete impact)
-node bin/model.mjs audit --missing-descriptions           # AI-readiness gaps
-node bin/model.mjs lint                                    # dangling refs, duplicate names
+```powershell
+pwsh bin/model.ps1 show "Net Sales" -Model <pbip-dir>   # one block + props + description
+pwsh bin/model.ps1 list -Measures -Folder Sales          # filtered inventory
+pwsh bin/model.ps1 deps "Net Sales"                      # what references it (rename/delete impact)
+pwsh bin/model.ps1 audit -MissingDescriptions            # AI-readiness gaps
+pwsh bin/model.ps1 lint                                   # dangling refs, duplicate names
 ```
 
-Add `--json` for compact structured output. If the tool is unavailable, fall
+Add `-Json` for compact structured output. If the tool is unavailable, fall
 back to grepping `tables/*.tmdl` for the name. Either way, then open the one
 target `.tmdl` file to edit.
 
@@ -75,7 +75,7 @@ Edit the `.tmdl` file directly with exact string edits.
 
 When you **add or change** a visible table, column, or measure, add or update its
 `///` description comment (the line directly above the object) in the same edit.
-Run `node bin/model.mjs audit --missing-descriptions` to find gaps. A description
+Run `pwsh bin/model.ps1 audit -MissingDescriptions` to find gaps. A description
 states:
 
 - what it means in business terms, and (for tables) the grain
