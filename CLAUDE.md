@@ -2,15 +2,13 @@
 
 Read `AGENTS.md` first.
 
-This repository is intentionally limited to:
+This repository does only two things, both as **local PBIP file edits** (no CLI,
+no MCP, no Fabric service):
 
-- enterprise Power BI semantic model work
-- Copilot / AI readiness for semantic models
-- PBIR / PBIP report development from the shared semantic model
+- `skills/edit-semantic-model/SKILL.md` — semantic model: DAX, measures, tables,
+  columns, relationships, TMDL, descriptions, synonyms.
+- `skills/edit-powerbi-report/SKILL.md` — PBIR reports: pages, visuals, slicers,
+  filters, bookmarks, themes, layout, formatting.
 
-Use:
-
-- `agents/SemanticModelAgent.agent.md` for semantic model, DAX, TMDL, XMLA, AI instructions, AI schema, descriptions, synonyms, Verified Answers, and Copilot readiness.
-- `agents/PowerBIReportAgent.agent.md` for PBIR/PBIP reports, pages, visuals, slicers, filters, themes, bookmarks, report deployment, and report rebinds.
-
-Do not use unrelated Fabric workload guidance unless explicitly requested.
+Pick the skill that matches the change. Needs both → semantic model first, then
+report. Do not use unrelated Fabric workload guidance.
